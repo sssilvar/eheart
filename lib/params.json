@@ -1,5 +1,6 @@
 {
-	"dataset_folder": "/home/sssilvar/Documents/data/heart",
+	"elastix_path": "/home/sssilvar/elastix-4.9.0-linux/bin/elastix",
+    "dataset_folder": "/home/sssilvar/Documents/data/heart",
     "csv_data": "",
     "extension": ".nii.gz"
 }
