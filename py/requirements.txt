@@ -1,0 +1,4 @@
+nibabel==2.2.1
+numpy==1.14.3
+scipy==1.1.0
+pandas==0.22.0
