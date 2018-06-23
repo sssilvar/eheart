@@ -158,4 +158,5 @@
 
 // The pixel type and format of the resulting deformed moving image
 (ResultImagePixelType "short")
-(ResultImageFormat "mhd")
+// (ResultImageFormat "mhd")
+(ResultImageFormat "nii.gz")
