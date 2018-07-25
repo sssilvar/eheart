@@ -35,13 +35,14 @@ if __name__ == '__main__':
     # Params
     n_scales = 10
     n_angles = 16
-    scale_selected = [0, 1, 2, 3, 4, 7, 8]
-    nii_file = '/user/ssilvari/home/code/eheart/data/patient004/patient004_frame15.nii.gz'
-    nii_gt = '/user/ssilvari/home/code/eheart/data/patient004/patient004_frame15_gt.nii.gz'
+    scale_selected = [0, 1, 2, 3, 4, 7, 8, 9]
+    nii_file = '/user/ssilvari/home/code/eheart/data/patient001/patient001_frame01.nii.gz'
+    nii_gt = '/user/ssilvari/home/code/eheart/data/patient001/patient001_frame01_dilated.nii.gz'
 
     # Load image
     nii = nb.load(nii_file).get_data()
     mask = nb.load(nii_gt).get_data()
+    # mask = np.ones_like(nii)
     nii = nii * mask
 
     # Select a slide (2D)
@@ -58,12 +59,13 @@ if __name__ == '__main__':
 
     # Reconstruct the image
     y = A.inv(f) * mask[:,:, slice_ix].T
+    y = y / y.max() * 256
 
     fig, ax = plt.subplots(1, 2, sharey='all')
-    ax[0].imshow(img, cmap='viridis')
+    ax[0].imshow(img, cmap='bone')
     ax[0].set_title('Original')
 
-    ax[1].imshow(np.abs(y), cmap='viridis')
+    ax[1].imshow(np.abs(y), cmap='bone')
     ax[1].set_title('Reconstructed (Only scale(s) %s)' % str(scale_selected))
     # plt.savefig(os.path.join('/home/sssilvar/Documents/output/', 'scale_%d_removed.png' % s), bbox_inches='tight')
     plt.show()
