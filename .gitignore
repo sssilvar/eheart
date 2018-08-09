@@ -1,7 +1,10 @@
 *.asv
 .idea/
+.vscode/
 data/
 output/
+
+
 
 *.nii.gz
 *.pyc
